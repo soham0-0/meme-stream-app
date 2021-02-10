@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Capriola&display=swap');
+
+.bg {
+  background: #264653;
+  min-height: 100vh;
+}
+
+h1, h2 {
+  color: #F4A261;
+  font-family: Capriola;
+  font-style: normal;
+  font-weight: normal;
+}
+
+h1 {
+  text-align: center;
+}

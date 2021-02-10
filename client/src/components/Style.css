@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+.btn-custom {
+    background-color: #C95539;
+    color: #E9C46A;
+    width: 15vw;
+    font-size: 25px;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+form {
+    font-family: Jua;
+    font-style: normal;
+    font-weight: normal;
+    overflow: auto;
+}
+
+.form-control {
+    background-color: #E9C46A;
+}
+
+.footer {
+    margin-top: 3vh;
+    background: #15303A;
+    text-align: center;
+    color: blanchedalmond;
+    font-family: Jua;
+    font-style: normal;
+    font-weight: normal;
+    padding: 2vh;
+}
+
+.middle {
+    vertical-align: middle;
+    margin: 0 2.5%;
+}
+
+.img {
+    height: 60%;
+    width: 90%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 5% auto;
+    vertical-align: middle;
+    border-radius: .25rem;
+}
+
+label {
+    font-size: 25px;
+    color: #F4A261;
+}
+
+.name {
+    height: max-content;
+    margin: 2% 5%;
+    font-size: large;
+    font-family: Jua;
+}
+
+.post {
+    width: 250px;
+    height: 400px;
+    background-color: #E9C46A;
+    margin: 7% auto;
+    border-radius: .25rem;
+    padding: 5%;
+}
+
+.scrollable {
+    max-height: 25%;
+    overflow: auto;
+}
