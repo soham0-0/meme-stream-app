@@ -28,7 +28,7 @@ class InputMeme extends React.Component {
                 return ;
             }
 
-            const response = await fetch("http://localhost:8081/memes",{
+            const response = await fetch("/memes",{
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(this.state)

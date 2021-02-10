@@ -8,7 +8,7 @@ const ListMeme = () => {
 
     const getMemes = async () => {
         try {
-            const response = await fetch("http://localhost:8081/memes");
+            const response = await fetch("/memes");
             const jsonData = await response.json();
         
             setMemes(jsonData);

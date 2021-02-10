@@ -7,11 +7,15 @@ export default class MemePost extends Component {
     onClick = async () => {
         try {
             const pass = window.prompt("Enter Password", "");
+            console.log(pass);
+            if(!pass) {
+                return;
+            }
             if(pass !== "qwert@1234") {
                 alert("Incorrect Password!");
                 return ;
             }
-            const response = await fetch(`http://localhost:8081/memes/${this.props.id}`, {
+            const response = await fetch(`/memes/${this.props.id}`, {
                 method: "DELETE",
             });
             window.location = "/";
