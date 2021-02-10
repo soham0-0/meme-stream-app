@@ -1,4 +1,4 @@
-CREATE DATABASE db_memes;
+-- CREATE DATABASE db_memes;
 
 CREATE TABLE tab_memes(
     id SERIAL PRIMARY KEY,

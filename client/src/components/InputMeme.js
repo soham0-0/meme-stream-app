@@ -50,30 +50,30 @@ class InputMeme extends React.Component {
             <div>
                 <h2>Post Meme</h2>
                 <form>
-                    <label className = "mt-3">Name</label>
+                    <label className = "mt-3">Meme Owner</label>
                     <input 
                         name = "name"
-                        placeholder = "Enter your Name"
+                        placeholder = "What do you call yourself?"
                         className = "form-control"
                         value = {this.state.name} 
-                        onChange = {e => this.change(e)}
-                    /> 
-                    <label className = "mt-3">Meme URL</label>
-                    <input 
-                        name = "url"
-                        placeholder = "Enter meme url"
-                        className = "form-control"
-                        value = {this.state.url} 
                         onChange = {e => this.change(e)}
                     /> 
                     <label className = "mt-3">Caption</label>
                     <input 
                         name = "caption"
-                        placeholder = "Enter caption max 500 chars"
+                        placeholder = "Enter something funny maybe :3 (maximum 200 characters)"
                         className = "form-control"
                         value = {this.state.caption} 
                         onChange = {e => this.change(e)}
                     />
+                    <label className = "mt-3">Meme URL</label>
+                    <input 
+                        name = "url"
+                        placeholder = "Enter url to your meme image here"
+                        className = "form-control"
+                        value = {this.state.url} 
+                        onChange = {e => this.change(e)}
+                    /> 
                     <button 
                         className = "btn btn-danger mt-3 float-right btn-custom"
                         onClick = {(e) => this.onSubmit(e)}
