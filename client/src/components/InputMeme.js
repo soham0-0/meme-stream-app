@@ -1,5 +1,6 @@
 import React from 'react';
 import isImageUrl from 'is-image-url';
+import {MdFileUpload} from 'react-icons/md';
 import './Style.css';
 
 class InputMeme extends React.Component {
@@ -28,12 +29,12 @@ class InputMeme extends React.Component {
                 return ;
             }
 
-            const response = await fetch("/memes",{
+            await fetch("/memes",{
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(this.state)
             });
-            console.log(response);
+            
             this.setState({
                 name: "",
                 url: "",
@@ -75,10 +76,11 @@ class InputMeme extends React.Component {
                         onChange = {e => this.change(e)}
                     /> 
                     <button 
-                        className = "btn btn-danger mt-3 float-right btn-custom"
+                        className = "btn btn-danger mt-4 float-right btn-custom"
                         onClick = {(e) => this.onSubmit(e)}
                     >
-                        Submit    
+                        <MdFileUpload style = {{verticalAlign: "middle"}}/>  
+                        <span className = "submit">Submit</span>    
                     </button>
                 </form>
             </div>

@@ -77,6 +77,11 @@ export const patchMeme = async (request, response) => {
 export const deleteMeme = async (request, response) => {
     try {
         const {id} = request.params;
+        const {pass} = request.body;
+        if(pass != "lieutenant") {
+            response.sendStatus(401);
+            return ;
+        }
         const { rowCount } = await pool.query(
             "DELETE FROM tab_memes WHERE id = $1",
             [id]

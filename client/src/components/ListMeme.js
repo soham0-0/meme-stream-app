@@ -21,11 +21,19 @@ const ListMeme = () => {
         getMemes();
     }, []);
 
-    console.log(memes);
     return (
         <div>
             <h2>Feed</h2>
             <div className = "row">
+                
+                {(function(){
+                    if(!memes.length){
+                        return <div className = "col-12 pt-5 text-center emptiness">
+                            It is empty out here mate :/
+                            </div>;
+                    }
+                })()}
+
                 {memes.map(meme => {
 
                     return <MemePost 

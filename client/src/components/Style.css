@@ -11,6 +11,16 @@
     cursor: pointer;
 }
 
+.emptiness {
+    min-height: 305px;
+    height: fit-content;
+    font-family: Jua;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    color: #272d3aba;
+}
+
 form {
     font-family: Jua;
     font-style: normal;
@@ -23,7 +33,6 @@ form {
 }
 
 .footer {
-    margin-top: 3vh;
     background: #15303A;
     text-align: center;
     color: blanchedalmond;
@@ -72,4 +81,11 @@ label {
 .scrollable {
     max-height: 25%;
     overflow: auto;
+}
+
+
+@media(max-width: 900px){
+    .submit {
+        display: none;
+    }
 }

@@ -114,11 +114,23 @@ router.patch("/:id", patchMeme);
  *            schema:
  *              type: integer
  *              required : true
+ *          - in: body
+ *            name: Password
+ *            description: Delete Password
+ *            schema:
+ *              type: object
+ *              required:
+ *                  - pass
+ *              properties:
+ *                  pass:
+ *                      type: string 
  *      responses:
  *          '200': 
  *              description: Success
  *          '404': 
  *              description: Does Not Exist
+ *          '401':
+ *              description: Unauthorized
  */
 router.delete("/:id", deleteMeme);
 
