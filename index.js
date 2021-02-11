@@ -12,17 +12,9 @@ import swaggerUI from "swagger-ui-express";
 
 import memeRoutes from "./routes/memes.js"
 
-// For https
-import fs from 'fs';
-import https from 'https';
-
-const key = fs.readFileSync('./ssl_certificate/key.pem');
-const cert = fs.readFileSync('./ssl_certificate/cert.pem');
-
 const app = express();
 const PORT = process.env.PORT || 8081;
 
-const server = https.createServer({key: key, cert: cert }, app);
 
 const swaggerOptions = {
     definition: {
@@ -57,12 +49,11 @@ if(process.env.NODE_ENV === "production") {
 
     const swaggerApp = express();
     const swaggerPORT = 8080;
-    const swaggerServer = https.createServer({key: key, cert: cert }, swaggerApp);
     
     swaggerApp.use(cors());
     swaggerApp.use("/swagger-ui", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
     
-    swaggerServer.listen(swaggerPORT, () => {
+    swaggerApp.listen(swaggerPORT, () => {
         console.log(`Swagger is running on http://localhost:${swaggerPORT}/swagger-ui`);
     });    
 }
@@ -79,6 +70,6 @@ app.get("*", (request, response) => {
     response.sendFile(path.join(__dirname, "client/build/"));
 });
 
-server.listen(PORT, () => {
+app.listen(PORT, () => {
     console.log(`Server Running on http://localhost:${PORT}/`);
 });
