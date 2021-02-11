@@ -2,9 +2,14 @@ import React, { Component, Fragment } from 'react';
 import InputMeme from './InputMeme.js'
 import './Style.css';
 
+// Icons
 import { FaUserCircle, FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { AiFillCloseSquare } from "react-icons/ai";
+
+// Lazy Loading
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css'; 
 
 export default class MemePost extends Component {
     onClick = async () => {
@@ -61,12 +66,13 @@ export default class MemePost extends Component {
                         </Fragment>
                         <MdDelete onClick = {() => this.onClick()} className = "middle cursor"/>
                     </div>
-                    <div 
-                        className = "img" 
-                        style = {{
-                            backgroundImage: `url(${this.props.url})`
-                        }}
-                    />
+                    <div className = "imgwrapper">
+                        <LazyLoadImage 
+                            className = "img" 
+                            src = {this.props.url}
+                            alt = {`meme${this.props.id}`}
+                        />
+                    </div>
                     <p className = "text-justify scrollable">
                         {this.props.caption}
                     </p>

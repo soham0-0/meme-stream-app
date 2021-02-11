@@ -52,12 +52,17 @@ form {
 }
 
 .img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: .25rem;
+}
+
+.imgwrapper {
     height: 60%;
     width: 90%;
-    background-size: cover;
-    background-repeat: no-repeat;
     margin: 5% auto;
-    border-radius: .25rem;
+    display: flex;
+    align-items: center;
 }
 
 label {

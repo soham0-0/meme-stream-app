@@ -83,8 +83,6 @@ class InputMeme extends React.Component {
                     {(function(isPost) {
                         if(!isPost) {
                             return <h2>Post A Meme</h2>;
-                        } else {
-                            return <h2>Edit The Meme</h2>;
                         }
                     })(this.state.isEdit)}
                     <label className = "mt-3">Meme Owner</label>
