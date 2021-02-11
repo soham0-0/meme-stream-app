@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import InputMeme from './InputMeme.js'
 import './Style.css';
+
 import { FaUserCircle, FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 
@@ -35,8 +37,27 @@ export default class MemePost extends Component {
                     <div className = "head">
                         <FaUserCircle className = "middle"/>
                         <div className = "middle name">{this.props.name}</div>
-                        <FaEdit className = "middle"/>
-                        <MdDelete onClick = {() => this.onClick()} className = "middle float-right cursor"/>
+                        <Fragment>
+                            <FaEdit className = "middle cursor" data-toggle="modal" data-target="#myModal"/>
+                            
+                            <div class="modal" id="myModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                
+                                        <div class="modal-header">
+                                        <h4 class="modal-title">Edit The Meme</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                
+                                        <div class="modal-body">
+                                            <InputMeme name = {this.props.name} id = {this.props.id} url = {this.props.url} caption = {this.props.caption}/>
+                                        </div>
+                                        <br/>
+                                    </div>
+                                </div>
+                            </div>
+                        </Fragment>
+                        <MdDelete onClick = {() => this.onClick()} className = "middle cursor"/>
                     </div>
                     <div 
                         className = "img" 

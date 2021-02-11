@@ -71,6 +71,10 @@ label {
     align-self: center;
 }
 
+.modal-content {
+    background: #264653;
+}
+
 .name {
     width: 130px;  
     white-space: nowrap;

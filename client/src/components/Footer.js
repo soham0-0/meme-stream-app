@@ -4,7 +4,7 @@ import './Style.css';
 const Footer = () => {
     return (
         <div className = "footer">
-            <span className = "footnote"> Made with ❤️ by <a href = "https://www.linkedin.com/in/soham-pal/" target="_blank" rel = "noreferrer">Soham Pal</a> © 2021 </span>
+            <span className = "footnote"> Copyright © 2021 <a href = "https://www.linkedin.com/in/soham-pal/" target="_blank" rel = "noreferrer">Soham Pal</a></span>
         </div>
     )
 }
