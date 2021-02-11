@@ -2,7 +2,7 @@
 
 ### TODO:
 -	[Implement HTTPS](https://stackoverflow.com/questions/11744975/enabling-https-on-express-js)
+-	Implement lazy loading for images
 -   Test the scripts
 -	Dockerize
--	Implement lazy loading for images
 -	Add NSFW feature
