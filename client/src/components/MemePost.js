@@ -32,10 +32,10 @@ export default class MemePost extends Component {
         return (
             <div className = "col-xs-12 col-sm-12 col-md-6 col-lg-3">
                 <div className = "post">
-                    <div className = "name">
+                    <div className = "head">
                         <FaUserCircle className = "middle"/>
-                        <span className = "middle">{this.props.name}</span>
-                        <FaEdit className = "middle float-right cursor"/>
+                        <div className = "middle name">{this.props.name}</div>
+                        <FaEdit className = "middle"/>
                         <MdDelete onClick = {() => this.onClick()} className = "middle float-right cursor"/>
                     </div>
                     <div 
@@ -44,9 +44,9 @@ export default class MemePost extends Component {
                             backgroundImage: `url(${this.props.url})`
                         }}
                     />
-                    <div className = "container text-justify scrollable">
+                    <p className = "text-justify scrollable">
                         {this.props.caption}
-                    </div>
+                    </p>
                 </div>
             </div>
         )
