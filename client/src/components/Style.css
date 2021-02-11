@@ -43,10 +43,10 @@ form {
 }
 
 .head {
-    width: 80%;
+    width: 95%;
     display: flex;
-    height: 45px;
-    margin: 5% auto;
+    height: 40px;
+    margin: 3% auto;
     font-size: large;
     font-family: Jua;
 }
@@ -67,7 +67,7 @@ label {
 
 .middle {
     vertical-align: middle;
-    margin: 0 1.7%;
+    margin: 0 2%;
     align-self: center;
 }
 
@@ -93,9 +93,9 @@ label {
 
 .scrollable {
     width: 90%;
-    max-height: 25%;
+    max-height: 20%;
     overflow: auto;
-    margin: 5% 5%;
+    margin: 0 5%;
 }
 
 
