@@ -8,30 +8,22 @@ class InputMeme extends React.Component {
         name: "",
         url: "",
         caption: "",
-    };
+        isEdit: false
+    };  
 
-    isEdit = false;    
-
-    checkForProps = () => {
-        if(this.props.id && !this.isEdit){
-            this.setState(this.props);
-            this.isEdit = true;
-        }
-    }
-
-    change = e => {
-        if(this.isEdit && e.target.name === "name") {
+    change = (e) => {
+        if(this.state.isEdit && e.target.name === "name") {
             return ;
         }
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
         });
     };
 
     onSubmit = async (e) => {
         try {
             e.preventDefault();
-            if(!this.isEdit || (!this.state.name || !this.state.url || !this.state.caption)){
+            if(!this.state.isEdit && (!this.state.name || !this.state.url || !this.state.caption)){
                 alert("All fields are required.");
                 return ;
             }
@@ -41,7 +33,7 @@ class InputMeme extends React.Component {
                 return ;
             }
 
-            if(this.isEdit){
+            if(this.state.isEdit){
                 await fetch(`/memes/${this.props.id}`,{
                     method: "PATCH",
                     headers: {"Content-Type": "application/json"},
@@ -50,11 +42,16 @@ class InputMeme extends React.Component {
                         "caption":  this.state.caption
                     })
                 });
+
             } else {
                 await fetch("/memes",{
                     method: "POST",
                     headers: {"Content-Type": "application/json"},
-                    body: JSON.stringify(this.state)
+                    body: JSON.stringify({
+                        "name": this.state.name,
+                        "url": this.state.url,
+                        "caption":  this.state.caption
+                    })
                 });
             }
             
@@ -62,6 +59,7 @@ class InputMeme extends React.Component {
                 name: "",
                 url: "",
                 caption: "",
+                isEdit: false
             });   
             window.location = "/";
         } catch (error) {
@@ -69,21 +67,32 @@ class InputMeme extends React.Component {
         }
     };
 
+    componentDidMount = () => {
+        if(this.props.id && !this.state.isEdit){
+            this.setState({
+                ...this.props, 
+                isEdit: true
+            });
+        }
+    }
+
     render() {
         return (
             <div>
                 <form>
-                    {this.checkForProps()}
                     {(function(isPost) {
                         if(!isPost) {
-                            return <h2>Post Meme</h2>;
+                            return <h2>Post A Meme</h2>;
+                        } else {
+                            return <h2>Edit The Meme</h2>;
                         }
-                    })(this.isEdit)}
+                    })(this.state.isEdit)}
                     <label className = "mt-3">Meme Owner</label>
                     <input 
                         name = "name"
                         placeholder = "What do you call yourself?"
                         className = "form-control"
+                        autoComplete = "off"
                         value = {this.state.name} 
                         onChange = {e => this.change(e)}
                     /> 
@@ -92,6 +101,7 @@ class InputMeme extends React.Component {
                         name = "caption"
                         placeholder = "Enter something funny maybe :3 (maximum 200 characters)"
                         className = "form-control"
+                        autoComplete = "off"
                         value = {this.state.caption} 
                         onChange = {e => this.change(e)}
                     />
@@ -100,6 +110,7 @@ class InputMeme extends React.Component {
                         name = "url"
                         placeholder = "Enter url to your meme image here"
                         className = "form-control"
+                        autoComplete = "off"
                         value = {this.state.url} 
                         onChange = {e => this.change(e)}
                     /> 

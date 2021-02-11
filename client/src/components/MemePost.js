@@ -39,19 +39,19 @@ export default class MemePost extends Component {
                         <FaUserCircle className = "middle"/>
                         <div className = "middle name">{this.props.name}</div>
                         <Fragment>
-                            <FaEdit className = "middle cursor" data-toggle="modal" data-target="#myModal"/>
+                            <FaEdit className = "middle cursor" data-toggle="modal" data-target={`#myModal${this.props.id}`}/>
                             
-                            <div class="modal" id="myModal">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
+                            <div className="modal" id = {`myModal${this.props.id}`}>
+                                <div className="modal-dialog">
+                                    <div className="modal-content">
                                 
-                                        <div class="modal-header">
+                                        <div className="modal-header">
                                         <h2 className = "modal-title">Edit The Meme</h2>
-                                        <button type="button" class="close" data-dismiss="modal">
+                                        <button type="button" className="close" data-dismiss="modal">
                                         <AiFillCloseSquare style = {{verticalAlign: "middle"}}/></button>
                                         </div>
                                 
-                                        <div class="modal-body">
+                                        <div className="modal-body">
                                             <InputMeme name = {this.props.name} id = {this.props.id} url = {this.props.url} caption = {this.props.caption}/>
                                         </div>
                                         <br/>
