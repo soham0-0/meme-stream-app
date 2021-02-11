@@ -5,11 +5,12 @@
   min-height: 100vh;
 }
 
-h1, h2, .modal-title, .close {
+h1, h2, .close {
   color: #F4A261;
   font-family: Capriola;
   font-style: normal;
   font-weight: normal;
+  vertical-align: middle;
 }
 
 h1 {

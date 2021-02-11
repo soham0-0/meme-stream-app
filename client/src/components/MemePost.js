@@ -4,6 +4,7 @@ import './Style.css';
 
 import { FaUserCircle, FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { AiFillCloseSquare } from "react-icons/ai";
 
 export default class MemePost extends Component {
     onClick = async () => {
@@ -45,8 +46,9 @@ export default class MemePost extends Component {
                                     <div class="modal-content">
                                 
                                         <div class="modal-header">
-                                        <h4 class="modal-title">Edit The Meme</h4>
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h2 className = "modal-title">Edit The Meme</h2>
+                                        <button type="button" class="close" data-dismiss="modal">
+                                        <AiFillCloseSquare style = {{verticalAlign: "middle"}}/></button>
                                         </div>
                                 
                                         <div class="modal-body">
