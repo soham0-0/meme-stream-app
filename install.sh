@@ -10,8 +10,6 @@ chmod +x ~/.nvm/nvm.sh
 
 source ~/.nvm/nvm.sh
 
-sleep 10
-
 echo "Installing node..."
 
 nvm install 12.20.1

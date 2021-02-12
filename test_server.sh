@@ -35,6 +35,8 @@ chmod +x sleep.sh
 
 curl --location --request GET 'http://localhost:8081/memes'
 
+echo ""
+
 
 # Execute the POST /memes endpoint using curl
 
@@ -44,13 +46,15 @@ curl --location --request POST 'http://localhost:8081/memes' \
 "name": "xyz",
 "url": "abc.com",
 "caption": "This is a meme"
-}'
+}' 
 
+echo ""
 
 # Execute the GET /memes endpoint using curl
 
 curl --location --request GET 'http://localhost:8081/memes'
 
+echo ""
 
 # If you have swagger enabled, make sure it is exposed at localhost:8080
 
