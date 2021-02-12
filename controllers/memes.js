@@ -138,24 +138,24 @@ const validateImageUrl = async (url) => {
 
     // Fetching for checking header Content-Type : image/*
     await fetch(url)
-    .then((response) => {
-        if(((response.headers.raw()['content-type'][0]).match(/(image)+\//g)).length != 0){
-            isImage = true;        
-        } else {
+        .then((response) => {
+            if(((response.headers.raw()['content-type'][0]).match(/(image)+\//g)).length != 0){
+                isImage = true;        
+            } else {
+                isImage = false;
+            }
+        }).catch((error) => {
             isImage = false;
-        }
-    }).catch((error) => {
-        isImage = false;
-    });
+        });
 
     // Requesting Size of the image just in case headers were wrong
     await requestImageSize(url)
-    .then(size => {
-        isImage = true;
-    })
-    .catch(err => {
-        isImage = isImage || false;
-    });
+        .then(size => {
+            isImage = true;
+        })
+        .catch(err => {
+            isImage = isImage || false;
+        });
     
     return isImage;
 }

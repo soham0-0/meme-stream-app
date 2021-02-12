@@ -29,6 +29,7 @@ class InputMeme extends React.Component {
 
             let response;
             if(this.state.isEdit){
+                // Patching the meme
                 response = await fetch(`/memes/${this.props.id}`,{
                     method: "PATCH",
                     headers: {"Content-Type": "application/json"},
@@ -37,7 +38,6 @@ class InputMeme extends React.Component {
                         "caption":  this.state.caption
                     })
                 });
-
             } else {
                 response = await fetch("/memes",{
                     method: "POST",
