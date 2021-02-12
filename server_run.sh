@@ -16,6 +16,8 @@ cat database/db_schema.sql | sudo -u postgres psql
 
 # Installing dependancies and Launching Server
 
+source ~/.nvm/nvm.sh
+
 npm install
 
 npm start
