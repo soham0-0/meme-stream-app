@@ -36,6 +36,7 @@ export default class MemePost extends Component {
             console.log(error.message);
         }
     }
+
     render() {
         return (
             <div className = "col-xs-12 col-sm-12 col-md-6 col-lg-3">
@@ -67,10 +68,10 @@ export default class MemePost extends Component {
                         <MdDelete onClick = {() => this.onClick()} className = "middle cursor"/>
                     </div>
                     <div className = "imgwrapper">
-                        <LazyLoadImage 
+                        <LazyLoadImage
                             className = "img" 
                             src = {this.props.url}
-                            alt = {`meme${this.props.id}`}
+                            alt = {"✘ Image couldn't be loaded"}
                         />
                     </div>
                     <p className = "text-justify scrollable">
