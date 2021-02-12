@@ -1,4 +1,6 @@
 import pool from "../database/db.js";
+import requestImageSize from 'request-image-size';
+import fetch from 'node-fetch';
 
 export const getMemes = async (request, response) => {
     try {
@@ -33,6 +35,11 @@ export const createMeme = async (request, response) => {
             return ;
         }
         
+        if(!await validateImageUrl(url)) {
+            response.sendStatus(400);
+            return ;
+        }
+
         const { rows: newMeme } = await pool.query(
             "INSERT INTO tab_memes (name, url, caption) VALUES($1, $2, $3) RETURNING id",
             [name, url, caption]
@@ -64,6 +71,12 @@ export const patchMeme = async (request, response) => {
             response.sendStatus(409);
             return ;
         }
+
+        if(!await validateImageUrl(url)) {
+            response.sendStatus(400);
+            return ;
+        }
+
         const newMeme = await pool.query(
             "UPDATE tab_memes SET url = $1, caption = $2 WHERE id = $3",
             [meme.url, meme.caption, id]
@@ -119,3 +132,30 @@ const checkDuplicate = async (name, url, caption) => {
         console.log(error.message);
     }
 };
+
+const validateImageUrl = async (url) => {
+    let isImage;
+
+    // Fetching for checking header Content-Type : image/*
+    await fetch(url)
+    .then((response) => {
+        if(((response.headers.raw()['content-type'][0]).match(/(image)+\//g)).length != 0){
+            isImage = true;        
+        } else {
+            isImage = false;
+        }
+    }).catch((error) => {
+        isImage = false;
+    });
+
+    // Requesting Size of the image just in case headers were wrong
+    await requestImageSize(url)
+    .then(size => {
+        isImage = true;
+    })
+    .catch(err => {
+        isImage = isImage || false;
+    });
+    
+    return isImage;
+}

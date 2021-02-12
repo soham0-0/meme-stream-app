@@ -1,5 +1,4 @@
 import React from 'react';
-import isImageUrl from 'is-image-url';
 import {MdFileUpload} from 'react-icons/md';
 import './Style.css';
 
@@ -27,14 +26,10 @@ class InputMeme extends React.Component {
                 alert("All fields are required.");
                 return ;
             }
-    
-            if(!isImageUrl(this.state.url)){
-                alert("URL is not a valid image");
-                return ;
-            }
 
+            let response;
             if(this.state.isEdit){
-                await fetch(`/memes/${this.props.id}`,{
+                response = await fetch(`/memes/${this.props.id}`,{
                     method: "PATCH",
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({
@@ -44,7 +39,7 @@ class InputMeme extends React.Component {
                 });
 
             } else {
-                await fetch("/memes",{
+                response = await fetch("/memes",{
                     method: "POST",
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({
@@ -54,7 +49,12 @@ class InputMeme extends React.Component {
                     })
                 });
             }
-            
+    
+            if(response.status === 400){
+                alert("URL is not a valid image");
+                return ;
+            }
+
             this.setState({
                 name: "",
                 url: "",

@@ -63,6 +63,8 @@ router.get("/:id", getMeme);
  *              description: Success
  *          '409': 
  *              description: Already Exists
+ *          '400':
+ *              description: Invalid Image URL
  */
 router.post("/", createMeme);
 
@@ -99,6 +101,8 @@ router.post("/", createMeme);
  *              description: Does Not Exist
  *          '409': 
  *              description: Already Exists
+ *          '400':
+ *              description: Invalid Image URL
  */
 router.patch("/:id", patchMeme);
 
