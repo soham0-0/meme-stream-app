@@ -24,7 +24,7 @@ node -v && npm -v
 
 sudo apt-get update
 
-sudo apt-get install postgresql postgresql-contrib
+sudo apt-get -y install postgresql postgresql-contrib
 
 service postgresql start
 
