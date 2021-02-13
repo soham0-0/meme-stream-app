@@ -69,7 +69,7 @@ PostgreSQL Express React Node (PERN) full-stack app for posting and viewing _Mem
 
 ### Local  - Frontend
 
-* `cd \client`
+* cd `client/`
 * Run `yarn install` to install all the project dependencies
 * Run `yarn start` to start development server.
 
