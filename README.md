@@ -19,6 +19,13 @@ PostgreSQL Express React Node (PERN) full-stack app for posting and viewing _Mem
 
 ## :books: General info
 
+## Directory Structure
+
+* The directory structure of this repo has been kept in accordance to the heroku deployment policies.
+* The **Front-End code is present in `./client/` directory**.
+* The **Back-End code is present in the root directory of the repository**.
+* The **Scripts and Dockerfile are also present in the root directory** itself, as pe the buildout assesment instructions 
+
 ### Backend
 
 * PostgreSQL needs to be installed and running - I installed it from the debian repository and configured in psql
