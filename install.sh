@@ -26,7 +26,7 @@ sudo apt-get update
 
 sudo apt-get -y install postgresql postgresql-contrib
 
-service postgresql start
+sudo service postgresql start
 
 # Changing Password
 
