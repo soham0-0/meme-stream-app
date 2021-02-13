@@ -8,16 +8,16 @@ PostgreSQL Express React Node (PERN) full-stack app for posting and viewing _Mem
 
 ## :page_facing_up: Table of contents
 
-* [General info](#general-info)
-* [Screenshots](#screenshots)
-* [Technologies](#technologies)
-* [Setup](#setup)
-* [Code Samples](#code-samples)
-* [Features](#features)
-* [Status and To-do](#status)
-* [Deployment](#deployment)
+* [General info](#books-general-info)
+* [Screenshots](#camera-screenshots)
+* [Technologies](#signal_strength-technologies-backend)
+* [Setup](#floppy_disk-setup)
+* [Code Samples](#computer-code-examples-backend)
+* [Features](#cool-features-backend)
+* [Status and To-do](#clipboard-status-to-do-list)
+* [Deployment](#rocket-deployment)
 
-## :books: <span id = "general-info">General info<span>
+## :books: General info
 
 ### Backend
 
@@ -30,7 +30,7 @@ PostgreSQL Express React Node (PERN) full-stack app for posting and viewing _Mem
 * React frontend includes a form component with name, caption and url input fields.
 * [Create React App](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app) was used for the frontend.
 
-## :camera: <span id = "screenshots">Screenshots</span>
+## :camera: Screenshots
 
 * Swagger UI
 ![Swagger screenshot](./screens/swagger.png)
@@ -38,7 +38,7 @@ PostgreSQL Express React Node (PERN) full-stack app for posting and viewing _Mem
 * App Front-End
 ![Frontend screenshot](./screens/frontend.png)
 
-## :signal_strength: <span id = "technologies">Technologies</span> - Backend
+## :signal_strength: Technologies - Backend
 
 * [PostgreSQL v13.1](https://www.postgresql.org/)
 * [Express.js middleware v4.17.1](https://expressjs.com/)
@@ -51,20 +51,29 @@ PostgreSQL Express React Node (PERN) full-stack app for posting and viewing _Mem
 * [Create React App](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app) used to bootstrap frontend React app
 * [Bootstrap v4](https://getbootstrap.com/) component library
 
-## :floppy_disk: <span id = "setup">Setup</span> - Backend
+## :floppy_disk: Setup 
+
+### Docker - Backend
+
+* Install [Docker](https://www.docker.com/) on your device.
+* Run `docker build -t xmeme_app .`
+* Run `docker run -d --net="host" xmeme_app`.
+* Now your backend server is running on *port 8081* and *swagger ui on port 8080*. 
+
+### Local - Backend (For Ubuntu 18.04 LTS)
 
 * Give executable permissions to the all the scripts as `$ chmod +x <script_name>`
 * Run `insall.sh` to install and setup the package dependencies eg, node, npm, postgresql.
 * Run `server_run` to install the npm dependencies and run the server for the first time.
 * Now every time you want to run the server run `npm run dev`
 
-## :floppy_disk: Setup - Frontend
+### Local  - Frontend
 
 * `cd \client`
 * Run `yarn install` to install all the project dependencies
 * Run `yarn start` to start development server.
 
-## :computer: <span id = "code-samples">Code Examples</span> - Backend
+## :computer: Code Examples - Backend
 
 * [node-fetch](https://www.npmjs.com/package/node-fetch) and [request-image-size](https://www.npmjs.com/package/request-image-size) npm packages used to validate the image url.
 
@@ -113,7 +122,7 @@ response = await fetch(`/memes/${this.props.id}`,{
 });
 ```
 
-## :cool: <span id = "features">Features</span> - Backend
+## :cool: Features - Backend
 
 * All data stored in PostgreSQL database that can also be viewed and changed from the PostgreSQL shell (psql)
 * The Image URL is validated in the backend to avoid issues further.
@@ -125,14 +134,14 @@ response = await fetch(`/memes/${this.props.id}`,{
 * React app created from the command prompt using [Create React App](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app)
 * [Bootstrap 4 Modal](https://www.w3schools.com/bootstrap4/bootstrap_modal.asp) used for edit window.
 
-## :clipboard: <span id = "status">Status</span> & To-Do List
+## :clipboard: Status & To-Do List
 
 * Status: Working front and back ends. App works and stores Memes in PostgreSQL database. Deploy to Heroku working.
 * To-Do (After Evaluation): 
     - Add Authentication to Ensure correct Edit and Delete permissions (Currently deletion is only possible with the use of master password) 
     - Add feature to detect and delete/stop NSFW content, using an external API.
 
-## :rocket: <span id = "deployment">Deployment</span>
+## :rocket: Deployment
 
 * Production Build of Front-End is served using express static.
 
@@ -147,7 +156,6 @@ if(process.env.NODE_ENV === "production") {
 ```
 
 * Deployed the Full Application (Both Client and Server) on [**heroku**](https://www.heroku.com/). 
-
     - _URL_: https://meme-stream-app.herokuapp.com/
 
 * API Calls can be made from the `/memes` endpoint.

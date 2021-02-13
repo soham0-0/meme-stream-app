@@ -15,7 +15,7 @@ import memeRoutes from "./routes/memes.js"
 const app = express();
 const PORT = process.env.PORT || 8081;
 
-
+// Setting up swagger Options
 const swaggerOptions = {
     definition: {
         info: {
@@ -46,7 +46,6 @@ if(process.env.NODE_ENV === "production") {
     app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 } else {
     // Starting Swagger UI on Port 8080
-
     const swaggerApp = express();
     const swaggerPORT = 8080;
     
@@ -60,6 +59,7 @@ if(process.env.NODE_ENV === "production") {
 
 app.use(bodyParser.json());
 
+// Routing for /memes endpoint
 app.use("/memes", memeRoutes);
 
 app.get("/", (request, response) => {

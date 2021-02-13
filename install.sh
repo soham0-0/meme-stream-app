@@ -28,4 +28,18 @@ sudo apt-get -y install postgresql postgresql-contrib
 
 service postgresql start
 
+# Changing Password
+
 sudo -u postgres psql -U postgres -d postgres -c "alter user postgres with password 'password';"
+
+echo "Creating .env file..."
+
+echo "PG_USER = postgres
+PG_PASSWORD = password
+PG_HOST = localhost
+PG_PORT = 5432
+PG_DATABASE = db_memes" > .env
+
+# Creating DB
+
+cat database/db_schema.sql | sudo -u postgres psql

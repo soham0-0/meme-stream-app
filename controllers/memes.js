@@ -109,6 +109,10 @@ export const deleteMeme = async (request, response) => {
     }
 };
 
+/**
+ * Fetch Required meme from the Database
+ * @param {number} id  ID of the required meme
+ */
 const fetchByID = async (id) => {
     try {
         const { rows } = await pool.query(
@@ -121,6 +125,12 @@ const fetchByID = async (id) => {
     }
 };
 
+/**
+ * Function to check if there is any duplicate entry in the database
+ * @param {string} name Name of meme owner
+ * @param {string} url URL of the Image
+ * @param {string} caption Caption of the meme post
+ */
 const checkDuplicate = async (name, url, caption) => {
     try {
         const { rows } = await pool.query(
@@ -133,6 +143,11 @@ const checkDuplicate = async (name, url, caption) => {
     }
 };
 
+
+/**
+ * Function to determine whether the image points to a valid image or not
+ * @param {string} url URL from the request body 
+ */
 const validateImageUrl = async (url) => {
     let isImage;
 

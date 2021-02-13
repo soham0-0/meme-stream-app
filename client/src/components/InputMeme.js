@@ -11,6 +11,7 @@ class InputMeme extends React.Component {
     };  
 
     change = (e) => {
+        // Preventing name change in Edit mode
         if(this.state.isEdit && e.target.name === "name") {
             return ;
         }
@@ -22,6 +23,8 @@ class InputMeme extends React.Component {
     onSubmit = async (e) => {
         try {
             e.preventDefault();
+
+            // Checking Input fields according to mode
             if(!this.state.isEdit && (!this.state.name || !this.state.url || !this.state.caption)){
                 alert("All fields are required.");
                 return ;
@@ -29,7 +32,7 @@ class InputMeme extends React.Component {
 
             let response;
             if(this.state.isEdit){
-                // Patching the meme
+                // Patching the Meme if in Edit Mode
                 response = await fetch(`/memes/${this.props.id}`,{
                     method: "PATCH",
                     headers: {"Content-Type": "application/json"},
@@ -39,6 +42,7 @@ class InputMeme extends React.Component {
                     })
                 });
             } else {
+                // Posting the Meme if NOT in Edit Mode
                 response = await fetch("/memes",{
                     method: "POST",
                     headers: {"Content-Type": "application/json"},
@@ -55,12 +59,19 @@ class InputMeme extends React.Component {
                 return ;
             }
 
+            if(response.status === 409){
+                alert("Already Exists");
+                return ;
+            }
+
             this.setState({
                 name: "",
                 url: "",
                 caption: "",
                 isEdit: false
             });   
+
+            // Reloading window
             window.location = "/";
         } catch (error) {
             console.log(error.message);
@@ -68,6 +79,7 @@ class InputMeme extends React.Component {
     };
 
     componentDidMount = () => {
+        // Determining Input mode [Post/Edit]
         if(this.props.id && !this.state.isEdit){
             this.setState({
                 ...this.props, 

@@ -16,10 +16,12 @@ export default class MemePost extends Component {
         try {
             const pass = window.prompt("Enter Password", "");
             
+            // Checking if a password was entered or not
             if(!pass) {
                 return;
             }
 
+            // Requesting Delete
             const response = await fetch(`/memes/${this.props.id}`, {
                 method: "DELETE",
                 headers: {"Content-Type": "application/json"},
