@@ -64,7 +64,7 @@ router.get("/:id", getMeme);
  *          '409': 
  *              description: Already Exists
  *          '400':
- *              description: Invalid Image URL
+ *              description: Invalid Image URL / Input Field Missing / Undocumented Error
  */
 router.post("/", createMeme);
 
@@ -102,7 +102,7 @@ router.post("/", createMeme);
  *          '409': 
  *              description: Already Exists
  *          '400':
- *              description: Invalid Image URL
+ *              description: Invalid Image URL / No Input / Undocumented Error
  */
 router.patch("/:id", patchMeme);
 

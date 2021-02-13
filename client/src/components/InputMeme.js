@@ -30,9 +30,20 @@ class InputMeme extends React.Component {
                 return ;
             }
 
+            if(this.state.name.length > 70 || this.state.url.length > 500 || this.state.caption.length > 200) {
+                alert(
+                    `${this.state.name.length > 70 ? "Name " : ""}${this.state.url.length > 500 ? "URL " : ""}${this.state.caption.length > 200 ? "Caption " : ""} Too Big!`
+                );
+                return ;
+            }
+
             let response;
             if(this.state.isEdit){
-                // Patching the Meme if in Edit Mode
+                // Patching the Meme if in Edit Mode with values to patch
+                if(!this.state.url && !this.state.caption) {
+                    alert("Both Fields Cannot be empty!");
+                    return ;
+                }
                 response = await fetch(`/memes/${this.props.id}`,{
                     method: "PATCH",
                     headers: {"Content-Type": "application/json"},

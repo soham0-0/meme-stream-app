@@ -10,6 +10,7 @@ export const getMemes = async (request, response) => {
         response.json(memes);
     } catch (error) {
         console.log(error.message);
+        response.sendStatus(400);
     }
 };
 
@@ -24,12 +25,20 @@ export const getMeme = async (request, response) => {
         }
     } catch (error) {
         console.log(error.message);
+        response.sendStatus(400);
     }
 };
 
 export const createMeme = async (request, response) => {
     try {
         const { name, url, caption } = request.body;
+
+        // Checking if any one (or more) of the fields is missing
+        if(!name || !url || !caption) {
+            response.sendStatus(400);
+            return ;
+        }
+        
         if(await checkDuplicate(name, url, caption)){
             response.sendStatus(409);
             return ;
@@ -46,7 +55,8 @@ export const createMeme = async (request, response) => {
         );
         response.json(newMeme[0]);
     } catch (error) {
-        console.log(error.message);   
+        console.log(error.message); 
+        response.sendStatus(400);  
     }
 };
 
@@ -59,7 +69,20 @@ export const patchMeme = async (request, response) => {
             return ;
         }
         
-        const { url, caption } = request.body;
+        const { name, url, caption } = request.body;
+        
+        // Checking if both fields are missing
+        if(name || (!(url) && !caption)) {
+            response.sendStatus(400);
+            return ;
+        }
+
+        // Checking if there is any change in the data
+        if((!url || meme.url === url) && (!caption || meme.caption === caption)){
+            response.sendStatus(200);
+            return ;
+        }
+
         if(url) {
             meme.url = url;
         }
@@ -72,7 +95,7 @@ export const patchMeme = async (request, response) => {
             return ;
         }
 
-        if(!await validateImageUrl(url)) {
+        if(url && !await validateImageUrl(url)) {
             response.sendStatus(400);
             return ;
         }
@@ -84,6 +107,7 @@ export const patchMeme = async (request, response) => {
         response.sendStatus(200);
     } catch (error) {
         console.log(error.message);
+        response.sendStatus(400);
     }
 };
 
@@ -106,6 +130,7 @@ export const deleteMeme = async (request, response) => {
         }
     } catch (error) {
         console.log(error.message);
+        response.sendStatus(400);
     }
 };
 
@@ -151,10 +176,10 @@ const checkDuplicate = async (name, url, caption) => {
 const validateImageUrl = async (url) => {
     let isImage;
 
-    // Fetching for checking header Content-Type : image/*
+    // Fetching for checking for existance of resource and header Content-Type : image/*
     await fetch(url)
         .then((response) => {
-            if(((response.headers.raw()['content-type'][0]).match(/(image)+\//g)).length != 0){
+            if(response.status === 200 && ((response.headers.raw()['content-type'][0]).match(/(image)+\//g)).length != 0){
                 isImage = true;        
             } else {
                 isImage = false;
