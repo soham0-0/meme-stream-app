@@ -1,6 +1,7 @@
 # 🐶 [Meme Stream App](https://meme-stream-app.herokuapp.com/) 🐶
 
-_As a part of Crio Winter of Doing Stage 2B_
+_As part of Crio Winter of Doing Stage 2B._ 
+_Have a look at the [walkthrough video.](https://drive.google.com/file/d/1r1JroG_QKenRinYy8enzVQAugoCUY-sU/view?usp=sharing)_
 ***
 PostgreSQL Express React Node (PERN) full-stack app for posting and viewing _Memes_, integrates React frontend with Node.js backend. 
 
