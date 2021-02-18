@@ -115,7 +115,7 @@ export const deleteMeme = async (request, response) => {
     try {
         const {id} = request.params;
         const {pass} = request.body;
-        if(pass != "lieutenant") {
+        if(pass != "password") {
             response.sendStatus(401);
             return ;
         }
