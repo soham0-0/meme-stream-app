@@ -1,7 +1,7 @@
-# 🐶 [Meme Stream App](https://meme-stream-app.herokuapp.com/) 🐶
+# 🐶 [Meme Stream App] 🐶
 
-_As part of Crio Winter of Doing Stage 2B._ 
-_Have a look at the [walkthrough video.](https://drive.google.com/file/d/1r1JroG_QKenRinYy8enzVQAugoCUY-sU/view?usp=sharing)_
+_A part of Crio Winter of Doing Stage 2B._ 
+
 ***
 PostgreSQL Express React Node (PERN) full-stack app for posting and viewing _Memes_, integrates React frontend with Node.js backend. 
 
@@ -16,7 +16,6 @@ PostgreSQL Express React Node (PERN) full-stack app for posting and viewing _Mem
 * [Code Samples](#computer-code-examples-backend)
 * [Features](#cool-features-backend)
 * [Status and To-do](#clipboard-status-to-do-list)
-* [Deployment](#rocket-deployment)
 
 ## :books: General info
 
@@ -25,7 +24,7 @@ PostgreSQL Express React Node (PERN) full-stack app for posting and viewing _Mem
 * The directory structure of this repo has been kept in accordance to the heroku deployment policies.
 * The **Front-End code is present in `./client/` directory**.
 * The **Back-End code is present in the root directory of the repository**.
-* The **Scripts and Dockerfile are also present in the root directory** itself, as pe the buildout assesment instructions 
+* The **Scripts and Dockerfile are also present in the root directory** itself, as per the buildout assesment instructions 
 
 ### Backend
 
@@ -89,10 +88,10 @@ PostgreSQL Express React Node (PERN) full-stack app for posting and viewing _Mem
 const validateImageUrl = async (url) => {
     let isImage;
 
-    // Fetching for checking header Content-Type : image/*
+    // Fetching for checking for existance of resource and header Content-Type : image/*
     await fetch(url)
         .then((response) => {
-            if(((response.headers.raw()['content-type'][0]).match(/(image)+\//g)).length != 0){
+            if(response.status === 200 && ((response.headers.raw()['content-type'][0]).match(/(image)+\//g)).length != 0){
                 isImage = true;        
             } else {
                 isImage = false;
@@ -148,28 +147,3 @@ response = await fetch(`/memes/${this.props.id}`,{
 * To-Do (After Evaluation): 
     - Add Authentication to Ensure correct Edit and Delete permissions (Currently deletion is only possible with the use of master password) 
     - Add feature to detect and delete/stop NSFW content, using an external API.
-
-## :rocket: Deployment
-
-* Production Build of Front-End is served using express static.
-
-```javascript
-if(process.env.NODE_ENV === "production") {
-    //Rendering Static Client Side
-    app.use(express.static("./client/build"));
-
-    // Swagger Docs
-    app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
-}
-```
-
-* Deployed the Full Application (Both Client and Server) on [**heroku**](https://www.heroku.com/). 
-    - _URL_: https://meme-stream-app.herokuapp.com/
-
-* API Calls can be made from the `/memes` endpoint.
-    - _URL_: https://meme-stream-app.herokuapp.com/memes
-
-* Swagger UI is running on `/api-docs`.
-    - _URL_: https://meme-stream-app.herokuapp.com/api-docs/
-
-
