@@ -7,19 +7,9 @@ PostgreSQL Express React Node (PERN) full-stack app for posting and viewing _Mem
 
 ***Note: to open web links in a new window use: _ctrl+click on link_***
 
-## :page_facing_up: Table of contents
-
-* [General info](#books-general-info)
-* [Screenshots](#camera-screenshots)
-* [Technologies](#signal_strength-technologies-backend)
-* [Setup](#floppy_disk-setup)
-* [Code Samples](#computer-code-examples-backend)
-* [Features](#cool-features-backend)
-* [Status and To-do](#clipboard-status-to-do-list)
-
 ## :books: General info
 
-## Directory Structure
+### Directory Structure
 
 * The directory structure of this repo has been kept in accordance to the heroku deployment policies.
 * The **Front-End code is present in `./client/` directory**.
