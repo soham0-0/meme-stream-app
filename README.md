@@ -1,4 +1,4 @@
-![meme-stream-app](https://socialify.git.ci/soham0-0/meme-stream-app/image?description=1&font=Bitter&language=1&owner=1&pattern=Charlie%20Brown&theme=Dark)
+![meme-stream-app](https://socialify.git.ci/soham0-0/meme-stream-app/image?description=1&language=1&owner=1&pattern=Circuit%20Board&stargazers=1&theme=Dark)
 ## :books: General info
 
 ### Directory Structure
