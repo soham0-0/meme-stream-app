@@ -1,12 +1,4 @@
-# 🐶 [Meme Stream App] 🐶
-
-_A part of Crio Winter of Doing Stage 2B._ 
-
-***
-PostgreSQL Express React Node (PERN) full-stack app for posting and viewing _Memes_, integrates React frontend with Node.js backend. 
-
-***Note: to open web links in a new window use: _ctrl+click on link_***
-
+![meme-stream-app](https://socialify.git.ci/soham0-0/meme-stream-app/image?description=1&font=Bitter&language=1&owner=1&pattern=Charlie%20Brown&theme=Dark)
 ## :books: General info
 
 ### Directory Structure
